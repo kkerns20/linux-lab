@@ -4,8 +4,8 @@ Hands-on Linux learning through self-hosting, Raspberry Pi, networking, automati
 
 ## Projects
 
+- **[YAMS Media Server](https://github.com/kkerns20/yams-media-server)** — Docker, self-hosting, VPN networking, media services, and troubleshooting
 - **Pi-hole** — Network-wide ad blocking and DNS management
-- **YAMS Media Server** — Self-hosted media server built on Linux
 - **Raspberry Pi Builds** — Practical Raspberry Pi projects and experiments
 - **Home Lab Experiments** — Linux, networking, automation, and self-hosted tools
 
