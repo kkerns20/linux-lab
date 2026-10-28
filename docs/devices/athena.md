@@ -100,6 +100,14 @@ git diff
 
 Read the repository instructions before editing, preserve unrelated changes, and review the complete diff for sensitive content. Commit and push only when explicitly authorized. Detailed access procedures belong in [operations](../operations/README.md).
 
+## Dedicated-key SSH administration of Hephaestus
+
+Owner-provided command results from October 28, 2026 establish a successful exercise with Athena (Fedora 44) as client and Hephaestus (Ubuntu 26.04.1 LTS) as server. The OpenSSH client, network routing, and ping were verified in that exercise. The owner confirmed an exact match between the ED25519 server fingerprint presented over the network and the fingerprint obtained directly from Hephaestus.
+
+Athena's existing SSH identity did not match the previously authorized key fingerprints, so a dedicated ED25519 administration key was created. Its public key was transferred by USB, verified, and appended while preserving prior authorized entries; key and authorization-file permissions and the authorization-file backup comparison were verified. Login with the dedicated key succeeded, remote hostname/user were checked, and `exit` returned the session to Athena. Codex did not repeat these checks or inspect keys or remote hosts during documentation work.
+
+See the [SSH runbook](../operations/ssh-athena-hephaestus.md) for the reusable placeholder connection command, evidence boundaries, safe key handling, troubleshooting, and untested recovery considerations. Outbound client access does not require enabling an SSH server on Athena. This host-specific login result is separate from GitHub SSH authentication.
+
 ## Hardware testing and maintenance
 
 Owner-confirmed on 2026-10-27; not independently retested in this session:
@@ -124,6 +132,6 @@ From the Fedora repository directory, run `codex`. The repository-level [AGENTS.
 
 For documentation changes, inspect the diff, check relative links, and run `git diff --check`. Leave changes unstaged for review unless staging is explicitly requested. Documentation authorization does not authorize configuration changes or remote administration.
 
-TODO: document the Python project/virtual-environment workflow, approved SSH administration procedures, and tested backup and recovery procedures. Detailed operational instructions belong in [operations](../operations/README.md). Keep detailed YAMS documentation in the [YAMS repository](https://github.com/kkerns20/yams-media-server).
+TODO: document the Python project/virtual-environment workflow, administration procedures beyond the tested SSH exercise, and tested backup and recovery procedures. Detailed operational instructions belong in [operations](../operations/README.md). Keep detailed YAMS documentation in the [YAMS repository](https://github.com/kkerns20/yams-media-server).
 
 See the [device inventory](README.md) and [architecture](../architecture/README.md) for the broader lab context.
