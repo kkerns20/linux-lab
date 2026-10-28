@@ -8,19 +8,23 @@ This repository is not just a collection of installation notes. Each project is 
 
 ## Current environment
 
-The lab currently includes an Ubuntu-based Linux system running containerized services, additional Windows hardware for administration and interoperability testing, and a separate laptop planned for alternate-Linux testing.
+Current device specifications were confirmed by the owner on 2026-10-27:
 
-The current server work includes:
+- **Atlas** — Gigabyte AERO X16; Windows 11 with Ubuntu 24.04 WSL2; primary workstation.
+- **Hermes** — Microsoft Surface Pro 7; Windows 11 Home 26H2; portable administration workstation.
+- **Hephaestus** — Dell Latitude 7480; Ubuntu 26.04.1 LTS; current temporary Docker/YAMS/Plex server.
+- **Athena** — HP Envy x360; Fedora Workstation 44 with encrypted Btrfs; Linux development workstation.
 
-- Ubuntu Linux administration
-- Docker and Docker Compose
-- persistent storage under `/srv/media`
-- Linux users, groups, ownership, and permissions
-- SSH and remote administration
-- VPN-isolated container networking with Gluetun + WireGuard
-- service troubleshooting and health validation
-- home networking, switching, DNS, and wired-vs-wireless design
-- backup, monitoring, UPS, and reliability planning
+**Olympus** is the planned permanent Home Lab server. **Prometheus** is a potential Raspberry Pi automation platform. Neither is documented as deployed.
+
+## Documentation
+
+- [Device inventory and specifications](docs/devices/README.md)
+- [Architecture overview and TODOs](docs/architecture/README.md)
+- [Operations and runbook backlog](docs/operations/README.md)
+- [Codex repository instructions](AGENTS.md)
+
+Current work centers on Linux administration, Docker, persistent storage, permissions, remote administration, and service troubleshooting. Backup, monitoring, UPS, storage expansion, and migration remain planning areas unless documented with validation evidence. Detailed YAMS documentation stays in its separate repository.
 
 ## Featured projects
 
@@ -61,6 +65,7 @@ The lab will expand into projects that demonstrate not only infrastructure admin
 - cloud deployment and architecture
 - identity, SSO, OAuth/OIDC, and role-based access
 - infrastructure automation
+- exploratory automation and monetization experiments (scope and validation TODO)
 - observability and incident response
 - small-business and customer-solution case studies
 - technical demos and executive-level solution summaries

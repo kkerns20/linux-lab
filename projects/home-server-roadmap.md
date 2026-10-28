@@ -1,38 +1,29 @@
 # Home Server Roadmap
 
-This document captures the next phase of the Home Lab: moving from a portable Dell laptop running Ubuntu and YAMS to a permanent, wired, expandable home server.
+This roadmap plans migration from **Hephaestus**, the current temporary Dell laptop server, to **Olympus**, a planned permanent, wired, expandable Home Lab server. Migration has not been documented as completed.
 
-## Current hardware
+## Current hardware and role
 
-The current lab host is a Dell Latitude 7480 with:
+Owner-confirmed on 2026-10-27:
 
+- Dell Latitude 7480 (Hephaestus)
 - Intel Core i5-6300U
-- 2 physical cores / 4 threads
-- 16 GB DDR4 RAM
-- 512 GB Samsung NVMe SSD
-- Intel I219-LM Ethernet
-- Intel 8265 Wi-Fi
-- Ubuntu 24.04.5 LTS
+- 16 GB RAM
+- 512 GB SSD
+- Ubuntu 26.04.1 LTS
+- Docker, YAMS, and Plex
 
-The machine is useful as a Linux learning system, but its portable laptop form factor, two-core CPU, 16 GB memory ceiling for practical workloads, and limited storage expansion make it a poor long-term infrastructure host.
+See the [Hephaestus device page](../docs/devices/hephaestus.md) for current inventory. Earlier SSD manufacturer/interface and network-adapter details require verification; they are not treated as confirmed specifications. TODO: verify storage expansion limits, workload capacity, and utilization before selecting replacement hardware.
 
-## Intended role for the Dell
+## Future role for Hephaestus
 
-The Latitude should gradually become a portable lab and administration machine:
+Hephaestus remains the temporary server until Olympus is ready and migration is validated. After migration, it could support Linux experiments, temporary VMs, or Docker testing. Its final role is TODO. Hermes currently fills the portable administration role, while Athena is the Linux development workstation.
 
-- Ubuntu desktop
-- VS Code
-- Git/GitHub
-- SSH administration
-- temporary VMs
-- Linux experiments
-- Docker testing
+The original direction of moving permanent services to a stationary machine remains the plan.
 
-The permanent services should move to a stationary machine.
+## Permanent server target: Olympus (planned)
 
-## Permanent server target
-
-The next server should be always on, wired to Ethernet, and located permanently in the office.
+Olympus should be always on, wired to Ethernet, and located permanently in the office. Hardware has not been selected. The specifications and hardware families below are planning candidates, not confirmed purchases or current market recommendations. TODO: validate requirements, compatibility, pricing, and availability before purchase.
 
 Target characteristics:
 
@@ -55,7 +46,7 @@ A newer Intel mini PC is also an option, but very low-power N100/N150 systems sh
 
 ## Compute and storage architecture
 
-The long-term design separates fast compute storage from bulk media storage.
+The proposed long-term design separates fast compute storage from bulk media storage. OS, paths, filesystem choices, and physical layout require validation before implementation.
 
 ```text
 Permanent server
@@ -82,11 +73,11 @@ YAMS should continue to see a stable path such as `/srv/media` regardless of how
 
 ### Stage 1: immediate expansion
 
-Budget target: approximately $150.
+Planning budget: approximately $150; current pricing and feasibility TODO.
 
 Add one large CMR hard drive for bulk media while keeping Ubuntu, Docker, Plex metadata, and application configuration on NVMe.
 
-Skills learned:
+Learning goals:
 
 - `lsblk`
 - partitioning and formatting
@@ -98,11 +89,11 @@ Skills learned:
 
 ### Stage 2: expandable media pool
 
-Budget target: approximately $500.
+Planning budget: approximately $500; current pricing and feasibility TODO.
 
 Add a multi-bay powered DAS and begin building a flexible media pool. MergerFS plus SnapRAID is a strong candidate because the media workload is dominated by large, mostly static files and future expansion is important.
 
-Skills learned:
+Learning goals:
 
 - storage pooling
 - parity
@@ -128,19 +119,21 @@ RAID or parity is not a substitute for backups.
 
 ## Migration project
 
-Moving YAMS from the Latitude to the permanent server should be treated as its own Home Lab project rather than a fresh install.
+Moving YAMS from Hephaestus to Olympus should be treated as its own Home Lab project rather than a fresh install.
+
+Detailed YAMS procedures belong in the [YAMS repository](https://github.com/kkerns20/yams-media-server); keep secrets and VPN configuration details out of this repository. This checklist is planned work, not an executed procedure.
 
 The migration should document:
 
 1. Inventory the current host.
-2. Back up `/opt/yams` configuration safely.
+2. Verify the current configuration location (previously documented as `/opt/yams`) and back it up safely.
 3. Preserve secrets outside Git.
-4. Recreate the `/srv/media` layout.
+4. Verify the current media layout (previously documented as `/srv/media`) and recreate the required paths.
 5. Install Docker and Docker Compose on the new host.
 6. Restore/recreate YAMS containers.
 7. Verify UID/GID and filesystem permissions.
 8. Verify Gluetun/VPN routing.
-9. Verify qBittorrent, Sonarr, Radarr, Prowlarr, and Plex.
+9. Confirm the deployed service inventory, then validate Plex and applicable YAMS services such as qBittorrent, Sonarr, Radarr, and Prowlarr.
 10. Test automatic startup after reboot.
 11. Test recovery from a failed service.
 12. Retire the laptop from permanent-server duty.
@@ -150,7 +143,13 @@ The migration should document:
 Before purchasing hardware:
 
 - document the current YAMS system
-- triage Sonarr/Radarr automatic download/import behavior
+- confirm whether the previously noted Sonarr/Radarr automatic download/import issue remains open, then triage if needed
 - use wired Ethernet when the Latitude is acting as the server
 - establish a backup procedure for configuration
 - define a mini-PC budget and compare real candidates
+
+## Related future infrastructure
+
+Prometheus is a potential Raspberry Pi automation platform. Adoption, model, workloads, and integration are TODO; no system is confirmed as deployed. Future automation and monetization experiments remain exploratory and should be evaluated alongside the [Solutions Engineering roadmap](solutions-engineering-roadmap.md).
+
+See the [architecture overview](../docs/architecture/README.md) and [operations backlog](../docs/operations/README.md) for documentation still needed before migration.
