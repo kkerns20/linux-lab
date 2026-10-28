@@ -4,6 +4,8 @@
 
 Portable administration workstation. Current state confirmed by the owner on 2026-10-27; no live device inspection was performed for this document.
 
+Owner-reported update received 2026-10-28: Hermes has a fresh, activated Windows 11 Home 26H2 installation and is no longer enrolled in the Windows Insider Program. Installation, activation, and enrollment state were not independently verified. Actual installation and enrollment-change dates, verification methods, and the exact Windows build remain TODO.
+
 ## Confirmed specifications
 
 | Item | Value |

@@ -19,6 +19,9 @@ Current device specifications were confirmed by the owner on 2026-10-27:
 
 ## Documentation
 
+- [Home Lab HQ: project status and next actions](docs/PROJECT-STATUS.md) — start here for a new ChatGPT conversation or Codex session.
+- [Architectural decision log](docs/DECISIONS.md)
+- [Work log and session template](docs/WORK-LOG.md)
 - [Device inventory and specifications](docs/devices/README.md)
 - [Architecture overview and TODOs](docs/architecture/README.md)
 - [Operations and runbook backlog](docs/operations/README.md)

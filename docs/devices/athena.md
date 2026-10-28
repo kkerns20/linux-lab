@@ -6,6 +6,8 @@ Athena is the dedicated Fedora development and Linux learning workstation. It su
 
 Sources and verification date: owner-confirmed hardware, role, and testing history, supplemented by read-only inspection of the current Fedora environment on 2026-10-27. Directly verified observations and owner-confirmed information are distinguished below. Hardware interaction tests, system updates, and firmware checks were not repeated during this documentation session.
 
+Update received 2026-10-28: the owner reports Fedora 44 with LUKS encryption, working GitHub SSH authentication, and Codex CLI. These recent reports were not independently retested. Limited read-only session checks on 2026-10-28 confirmed hostname `athena`, Fedora 44, kernel `7.2.13-200.fc44.x86_64`, Bash, and the repository directory `/home/kkerns20/projects/linux-lab`; no SSH or WSL session markers were present. This suggests a local Fedora context but does not conclusively establish the connection method. The tables below retain their 2026-10-27 inspection dates.
+
 ## Confirmed specifications
 
 Owner-confirmed on 2026-10-27:
@@ -30,6 +32,14 @@ Owner-confirmed on 2026-10-27:
 | SSD | Samsung NVMe, model MZVLB256HAHQ-000H1; 238.5 GiB displayed capacity (`lsblk`) |
 
 The SSD model is a product model, not a serial number. The observed Linux memory total differs from the owner-confirmed 8 GB installed capacity. TODO: verify the reason for the difference; no hardware reservation or memory fault is inferred from this check.
+
+Owner-reported update received 2026-10-28: two 4 GiB RAM modules are installed, while Fedora reports approximately 5.7 GiB usable. A substantial firmware memory reservation was observed according to the owner; its exact purpose has not been conclusively established. Module details and reservation evidence were not independently inspected for this update. TODO: establish the reservation's purpose before attributing it to graphics, firmware behavior, or a hardware fault.
+
+## Firewall posture
+
+Owner-reported update received 2026-10-28: the NetworkManager Wi-Fi connection profile was assigned to firewalld's `public` zone and incoming SSH permission was removed. The owner reports that this persisted and was verified after reboot. This is an outbound-oriented workstation setup; the configuration and reboot behavior were not independently tested during documentation work. The change date and sanitized validation method remain TODO. This report does not establish that all inbound traffic is blocked.
+
+See [decision D-009](../DECISIONS.md#d-009--athena-outbound-oriented-firewall) for the policy and [operations](../operations/README.md) for future access, validation, and rollback procedures.
 
 ## Fedora development environment
 

@@ -2,7 +2,7 @@
 
 ## Purpose and reading order
 
-This repository documents the Home Lab and its Solutions Engineering portfolio. Read the root README, the relevant device document under `docs/devices/`, and the relevant project or operations document before working. Keep detailed YAMS documentation in https://github.com/kkerns20/yams-media-server.
+This repository documents the Home Lab and its Solutions Engineering portfolio. At the beginning of substantial Home Lab tasks, read `docs/PROJECT-STATUS.md`, then the root README, the relevant device document under `docs/devices/`, and the relevant project or operations document before working. Consult `docs/DECISIONS.md` for established choices and `docs/WORK-LOG.md` for prior work and validation history. Keep detailed YAMS documentation in https://github.com/kkerns20/yams-media-server.
 
 ## Scope and safety
 
@@ -25,6 +25,13 @@ This repository documents the Home Lab and its Solutions Engineering portfolio. 
 - Update cross-links when moving or adding documentation. Avoid duplicating inventories and detailed YAMS procedures.
 - Follow the project workflow: problem, requirements, constraints, options, architecture, implementation, validation, troubleshooting, tradeoffs, and lessons learned. Include technical, customer, and executive explanations where useful.
 - Give projects an explicit status. Preserve the Solutions Engineering roadmap and future automation and monetization experiments; do not present planned work as deployed or validated.
+
+## Home Lab HQ maintenance
+
+- After significant work sessions that authorize documentation edits, update the authoritative device, architecture, project, or operations document first, then refresh `docs/PROJECT-STATUS.md` with concise milestones, issues, and prioritized next actions. Keep its last-updated date separate from the dates and scope of actual verification; owner reports do not advance live-verification dates.
+- Record new or changed architectural decisions in `docs/DECISIONS.md`, including status, rationale, tradeoffs, source, and supported dates. Mark missing information TODO; preserve superseded decisions and link their replacements.
+- Append meaningful work to `docs/WORK-LOG.md` using its template. Separate execution dates from report dates, cite relevant commits or documents, and state validation actually performed and remaining next actions. A documentation commit does not prove a deployment or test occurred.
+- Keep these master documents brief and linked to authoritative details; do not copy technical procedures or detailed inventories into them. During read-only sessions, report suggested updates without editing files. These maintenance instructions do not authorize host administration, staging, commits, or publication.
 
 ## Validation and reporting
 
