@@ -2,7 +2,7 @@
 
 ## Role and status
 
-Current temporary Home Lab server running Docker/YAMS/Plex. The owner confirmed the model and supplied command results from the October 28, 2026 inventory and successful Athena-to-Hephaestus SSH exercise. All October 28 findings below are **owner-provided evidence**, not commands independently executed by Codex. They describe that inspection, not continuous service health.
+Current temporary Home Lab server running Docker/YAMS/Plex. The owner confirmed the model and supplied command results from the October 28, 2026 inventory and successful Athena-to-Hephaestus SSH exercise. Inventory, SSH exercise, and YAMS backup findings below are **owner-provided evidence**, not commands independently executed by Codex. They describe those checks, not continuous service health. The sandbox investigation separately labels directly observed Codex results and owner reports.
 
 ## System inventory — 2026-10-28
 
@@ -76,6 +76,22 @@ Source: owner-provided October 28 terminal output; Codex did not execute the bac
 - **Post-backup state:** YAMS reported all 11 containers running following the successful retry; a separate Docker health check was not performed afterward. Application-level functionality was not independently reverified; these results supersede the earlier YAMS running count without establishing the disposition of other stopped containers.
 - **Protection gaps:** No external backup disk or mounted network backup storage was detected. No off-device backup exists, and no backup restoration test has occurred. A readable local archive does not establish recoverability or protection against loss of the server/SSD; media backup coverage remains TODO.
 - **Next actions:** Arrange and verify an off-device copy; define backup scope (including media), retention, and recovery requirements; document a controlled restore test with prerequisites, validation, and rollback; reverify application behavior. Document backup permission preflight and guaranteed service restart on failure in the [YAMS troubleshooting log](https://github.com/kkerns20/yams-media-server/blob/main/docs/troubleshooting.md) before the next backup. Script hardening and operational tests require separate authorization; the successful retry does not establish a permanent script fix.
+
+## Codex sandbox networking investigation — 2026-10-28
+
+The investigation isolated GitHub access failures to Codex's sandbox network restrictions; it did not establish an Ubuntu host DNS problem.
+
+| Evidence source | Verified result |
+| --- | --- |
+| Codex sandbox command output | `getent ahosts github.com` returned no output and exited with code `2`; Git failed with `Could not resolve host: github.com` and exit code `128`. |
+| Owner-provided regular-terminal results | The same `getent ahosts github.com` lookup succeeded in Hephaestus's regular terminal, and Git could reach GitHub there. Codex did not independently execute those terminal checks. |
+| Owner-reported permission selection | The selected Codex permission mode was **Ask for approval**. |
+| Codex operation after owner approval | Retrying `git -C /home/kkerns20/linux-lab ls-remote origin refs/heads/main` with approved network access succeeded with exit code `0`. |
+| Repository verification | GitHub `main`, local `HEAD`, and local `origin/main` matched `65c689c1bb4dd129223cf510784bc3c9240d53b7`; the checkout was clean at synchronization. |
+
+No Ubuntu DNS configuration changes were necessary or made. A DNS-looking error from a restricted command environment alone does not establish host resolver failure.
+
+Recommended workflow: retain sandbox protection and **Ask for approval**. When a required network command fails inside the sandbox, request approval for that specific operation and retry with approved network access; then verify its result. Compare execution contexts before proposing host networking changes. This workflow is consistent with [official OpenAI approval and sandbox guidance](https://learn.chatgpt.com/docs/agent-approvals-security); it is not evidence that every future connectivity failure has the same cause.
 
 ## Terminal identity
 
