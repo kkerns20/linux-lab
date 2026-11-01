@@ -1,6 +1,6 @@
 # Home Lab HQ — Project Olympus status
 
-**Last updated:** 2026-10-28. **Last verified:** 2026-10-28 for repository synchronization and the current Athena Fedora session context. Hephaestus inventory, SSH exercise, and backup/recovery results dated 2026-10-28 are owner-provided evidence, not independent Codex inspections. Earlier device inspections retain their own dates; this is not a fleet health check.
+**Last updated:** 2026-11-01 (planning documentation only). GitHub main reviewed 2026-11-01 at `b598fe8`; no new fleet checks. **Last verified:** 2026-10-28 for repository synchronization and the current Athena Fedora session context. Hephaestus inventory, SSH exercise, and backup/recovery results dated 2026-10-28 are owner-provided evidence, not independent Codex inspections. Earlier device inspections retain their own dates; this is not a fleet health check.
 
 Start here for new ChatGPT conversations and Codex sessions, then read [repository instructions](../AGENTS.md) and the relevant authoritative documents below. Home Lab HQ is the central planning and documentation workflow for Project Olympus. See the [decision log](DECISIONS.md) and [chronological work log](WORK-LOG.md) for context.
 
@@ -45,6 +45,12 @@ Hardware specifications remain in the [device inventory](devices/README.md) and 
 | Networking, backups, and service inventory | Partial baseline recorded: owner-tested SSH access plus sanitized host/container/storage inventory. A readable local YAMS backup is recorded; off-device protection, restore testing, topology, source/exposure review, and dependencies remain TODO in [architecture](architecture/README.md) and [operations](operations/README.md). |
 | Solutions Engineering portfolio | Infrastructure foundation underway; API, data, cloud, identity, and customer case studies remain planned in the [six-phase roadmap](../projects/solutions-engineering-roadmap.md). Future automation and monetization experiments remain exploratory. |
 
+## Development ideas — workshop, not execution
+
+The [Project Olympus development roadmap](../projects/olympus-development-roadmap.md) is the canonical overview for the proposed Home & Family, Build & Develop, and Create & Publish workstreams. It preserves the four leading ideas, alternative sequencing, the proposed 90-day experiment, 5–7 total hours/week, existing-device reuse, and open questions. Usefulness and selection remain under discussion; family organizer versus creator dashboard is undecided. No new apps/content services are recorded as deployed and no commercial demand is established. Infrastructure priorities below retain their own scope.
+
+**Next coordination step, owner direction 2026-11-01:** review this documentation, continue workshopping ideas, and resume YAMS administration checks from Atlas in a separately scoped session. No administration checks were performed here. Refresh Project snapshots only after approved GitHub publication, using the [continuity workflow](../projects/olympus-development-roadmap.md#documentation-and-continuity).
+
 ## Known issues, blockers, and unresolved questions
 
 - **Athena memory:** owner reports two 4 GiB modules but approximately 5.7 GiB usable. The 2026-10-27 recorded inspection showed approximately 5.69 GiB visible to Linux. A substantial firmware reservation is owner-reported; its exact purpose is unresolved. TODO: establish cause using sanitized evidence; do not assume a graphics allocation or memory fault. Details: [Athena](devices/athena.md#directly-verified-hardware).
@@ -62,4 +68,4 @@ Hardware specifications remain in the [device inventory](devices/README.md) and 
 4. **P2 — Resolve device evidence gaps:** clarify both devices' memory discrepancies and Hephaestus prompt persistence; obtain dated Athena firewall/reboot evidence and confirm Hermes build, activation/enrollment evidence, and administration tools. Keep findings in device pages and procedures in operations.
 5. **P2 — Define Olympus requirements:** after inventory and backup planning, confirm workload capacity, budget, candidate hardware, storage design, migration acceptance criteria, and recovery approach in the [server roadmap](../projects/home-server-roadmap.md). No purchase or deployment is implied.
 6. **P2 — Maintain Home Lab HQ:** confirm missing historical dates or rationale where known. Commits and pushes require explicit owner authorization. After significant authorized GitHub documentation updates, refresh shared Project snapshots and record the source revision and refresh date. Initial Project setup and source-access validation are complete per owner report.
-7. **P3 — Extend the portfolio:** progress through the [Solutions Engineering roadmap](../projects/solutions-engineering-roadmap.md); scope Prometheus, automation, and monetization experiments with costs and success criteria before implementation.
+7. **P3 — Workshop development ideas:** assess usefulness and scope through the [development roadmap](../projects/olympus-development-roadmap.md), keeping project choice and experiment start open. Link selected evidence to the [Solutions Engineering roadmap](../projects/solutions-engineering-roadmap.md); scope Prometheus and any implementation separately.

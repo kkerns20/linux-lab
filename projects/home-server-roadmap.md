@@ -2,6 +2,8 @@
 
 This roadmap plans migration from **Hephaestus**, the current temporary Dell laptop server, to **Olympus**, a planned permanent, wired, expandable Home Lab server. Migration has not been documented as completed.
 
+The broader [Project Olympus development roadmap](olympus-development-roadmap.md) coordinates proposed family, application, and original content experiments. It does not change this roadmap's infrastructure scope or authorize new workloads, purchases, or migration.
+
 ## Current hardware and role
 
 Owner-confirmed on 2026-10-27:

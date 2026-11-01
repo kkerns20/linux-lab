@@ -1,6 +1,6 @@
 # Home Lab architectural decision log
 
-**Last updated:** 2026-10-28. This ongoing log records established choices and planned direction. Implementation evidence belongs in the linked device, project, or operations document.
+**Last updated:** 2026-11-01. This ongoing log records established choices and planned direction. Implementation evidence belongs in the linked device, project, or operations document.
 
 Dates below distinguish first documentation, owner report, and adoption. Original adoption dates are TODO unless supported. Tradeoffs describe implications for future review; they are not claims that the owner used those arguments when deciding. Missing historical rationale remains TODO. Preserve superseded entries and link replacement decisions.
 
@@ -84,6 +84,15 @@ Dates below distinguish first documentation, owner report, and adoption. Origina
 - **Rationale:** The owner identifies an outbound-oriented workstation posture. Detailed threat model and original change rationale TODO.
 - **Tradeoffs:** Incoming SSH administration on this connection cannot be assumed available. Full effective rules, other profiles, and exposure have not been inspected; this is not evidence that all incoming traffic is blocked. Any future access change needs explicit authorization and a documented recovery path.
 - **Authority:** [Athena firewall posture](devices/athena.md#firewall-posture), [operations backlog](operations/README.md).
+
+## D-010 — Coordinate proposed development workstreams separately from infrastructure
+
+- **Status:** Proposed planning structure; owner review pending. Project selection and execution remain open.
+- **Date/source:** Owner's 2026-11-01 documentation request, three supplied planning responses, and clarification that ideas/usefulness are still being workshopped. Original response dates TODO.
+- **Decision:** Use one [development roadmap](../projects/olympus-development-roadmap.md) to coordinate Home & Family, Build & Develop, and Create & Publish ideas, proposed gates, and shared constraints. Keep infrastructure design in the home server roadmap and portfolio standards in the Solutions Engineering roadmap. GitHub main remains authoritative under D-006.
+- **Rationale:** Preserve the proposals outside conversation history and make them easy to find without implying selected products or burying Home Lab operations.
+- **Tradeoffs:** Multiple linked roadmaps require concise status maintenance. Reusing capabilities can reduce duplicated effort, but parallel work must fit the proposed total 5–7 hours/week. Neither hosting architecture, new spending, publication, customer demand, nor revenue is established.
+- **Authority:** [Development roadmap](../projects/olympus-development-roadmap.md), [home server roadmap](../projects/home-server-roadmap.md), [Solutions Engineering roadmap](../projects/solutions-engineering-roadmap.md). Adoption date TODO pending owner review.
 
 ## Future decision template
 

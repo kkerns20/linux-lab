@@ -40,6 +40,11 @@ Hardware, storage, migration, and reliability planning for moving from an experi
 ### [Solutions Engineering Roadmap](projects/solutions-engineering-roadmap.md)
 A six-month portfolio plan connecting the Home Lab to customer discovery, architecture, APIs, cloud, data analysis, demos, and technical solution design.
 
+### [Project Olympus Development Roadmap](projects/olympus-development-roadmap.md)
+Canonical idea workshop for Home & Family, Build & Develop, and Create & Publish: leading ideas, open first-app choice, and a proposed 90-day experiment. This complements the infrastructure and portfolio roadmaps; no project selection, deployment, publication, or revenue is implied.
+
+GitHub main is the source of truth. ChatGPT Project uploads are manually refreshed snapshots; see the [roadmap's continuity workflow](projects/olympus-development-roadmap.md#documentation-and-continuity).
+
 ## How projects are documented
 
 For portfolio-grade projects, I aim to capture:

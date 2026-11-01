@@ -4,6 +4,8 @@ This roadmap connects the Home Lab to a portfolio aimed at customer-facing techn
 
 The goal is not to collect certifications or isolated tutorials. The goal is to build a small set of projects that show I can understand a problem, gather requirements, design a solution, validate it technically, troubleshoot failures, and communicate the result clearly.
 
+The [Project Olympus development roadmap](olympus-development-roadmap.md) is the canonical workshop for proposed family tools, reporting automation, original content, and AI workflow experiments. Selected projects may provide evidence for the phases below; the proposed 90-day experiment does not replace this capability roadmap or establish completed portfolio work.
+
 ## Target capability
 
 By the end of this roadmap, I should be able to walk through a technical project in the same sequence I would use with a customer:
