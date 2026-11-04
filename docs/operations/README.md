@@ -4,13 +4,15 @@
 
 This directory holds sanitized administration and recovery runbooks. The [Athena-to-Hephaestus SSH exercise](ssh-athena-hephaestus.md) was successfully completed on October 28, 2026 according to owner-provided command results. Its tested scope covers reachability, host identity, dedicated-key authorization/login, remote identity checks, and safe disconnection. Codex did not execute the exercise; recovery, backup restoration, and broader hardening remain untested. Current device facts are in the [inventory](../devices/README.md); design context is in [architecture](../architecture/README.md).
 
+The [iPhone-to-Atlas Tailscale/SSH exercise](ssh-iphone-atlas-tailscale.md) succeeded over cellular on 2026-11-03 per owner-reported command results, including Windows login and Ubuntu WSL2 access. Service startup was configured but reboot persistence, lid behavior, full firewall/authentication audit, and host-key verification remain open. Atlas is allowed to sleep normally.
+
 Detailed Docker/YAMS/Plex deployment and troubleshooting documentation belongs in the [YAMS repository](https://github.com/kkerns20/yams-media-server). Link to relevant procedures rather than copying sensitive configuration here.
 
 ## Runbook backlog
 
 | Procedure | Status and missing information |
 | --- | --- |
-| Device access and administration | [Athena-to-Hephaestus SSH](ssh-athena-hephaestus.md): owner-tested 2026-10-28; other access paths, recovery, and broader administration TODO |
+| Device access and administration | [Athena-to-Hephaestus SSH](ssh-athena-hephaestus.md): owner-tested 2026-10-28; [iPhone-to-Atlas Tailscale SSH](ssh-iphone-atlas-tailscale.md): owner-tested over cellular 2026-11-03. Post-reboot recovery and broader hardening TODO |
 | Service inventory and health checks | [Hephaestus inventory](../devices/hephaestus.md#container-inventory) recorded from owner-provided 2026-10-28 results; dependencies, versions, and application-level checks TODO |
 | Backup and restore | TODO: define scope, destination, retention, access controls, and restore validation |
 | Startup and recovery | TODO: document observed reboot behavior and tested recovery steps |
