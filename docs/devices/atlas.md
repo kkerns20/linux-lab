@@ -28,6 +28,16 @@ Windows 11 is the primary host operating system. The following are owner-confirm
 
 TODO: verify the Windows version/build, GiMATE and DisplayLink versions, and active dock/display configuration before troubleshooting host hardware. Linux tool checks do not establish that corresponding Windows tools are installed.
 
+## Remote access from iPhone (owner-tested 2026-11-03)
+
+An iPhone running Tailscale and Termius successfully connected **over cellular** to the Atlas **Windows** OpenSSH server using a dedicated ED25519 SSH key, then launched the existing Ubuntu WSL2 Bash environment. Windows and Linux account/hostname checks succeeded. This path reaches Windows first; it is not a direct WSL2 SSH listener or an independently configured connection to Hephaestus.
+
+The default OpenSSH inbound firewall allowance was disabled and replaced by a TCP/22 rule restricted to the Tailscale interface (interface filter confirmed by owner). The Windows administrator authorized-keys file was verified to allow only SYSTEM and Administrators. Windows SSH and Tailscale services both showed **Running / Automatic**, but a post-reboot reconnect has not been tested. Full effective firewall coverage, effective password-authentication settings, and SSH host-key fingerprint comparison remain unverified.
+
+The owner elected to retain normal laptop sleep: **30 minutes on AC and 5 minutes on battery**, rather than leaving Atlas awake indefinitely. The AC setting was temporarily changed to Never for testing, then restored by owner report (no subsequent readback). Lid-close action remains unverified. Consequently, remote access works only when Atlas is powered on, awake, and connected.
+
+See the [owner-tested iPhone/Tailscale/Windows SSH runbook](../operations/ssh-iphone-atlas-tailscale.md) for sanitized setup history, validation, troubleshooting, security limits, and recovery. No private network addresses, login names, or SSH keys are stored in this repository.
+
 ## Ubuntu WSL2 development environment
 
 Read-only checks on 2026-10-27 established:
