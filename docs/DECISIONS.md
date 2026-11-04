@@ -1,6 +1,6 @@
 # Home Lab architectural decision log
 
-**Last updated:** 2026-11-01. This ongoing log records established choices and planned direction. Implementation evidence belongs in the linked device, project, or operations document.
+**Last updated:** 2026-11-03. This ongoing log records established choices and planned direction. Implementation evidence belongs in the linked device, project, or operations document.
 
 Dates below distinguish first documentation, owner report, and adoption. Original adoption dates are TODO unless supported. Tradeoffs describe implications for future review; they are not claims that the owner used those arguments when deciding. Missing historical rationale remains TODO. Preserve superseded entries and link replacement decisions.
 
@@ -93,6 +93,15 @@ Dates below distinguish first documentation, owner report, and adoption. Origina
 - **Rationale:** Preserve the proposals outside conversation history and make them easy to find without implying selected products or burying Home Lab operations.
 - **Tradeoffs:** Multiple linked roadmaps require concise status maintenance. Reusing capabilities can reduce duplicated effort, but parallel work must fit the proposed total 5–7 hours/week. Neither hosting architecture, new spending, publication, customer demand, nor revenue is established.
 - **Authority:** [Development roadmap](../projects/olympus-development-roadmap.md), [home server roadmap](../projects/home-server-roadmap.md), [Solutions Engineering roadmap](../projects/solutions-engineering-roadmap.md). Adoption date TODO pending owner review.
+
+## D-011 — Private, occasional iPhone administration of Atlas
+
+- **Status:** Adopted and owner-tested on 2026-11-03; reboot persistence and broader security review incomplete.
+- **Date/source:** Owner-provided Windows PowerShell and Termius results in the 2026-11-03 remote administration exercise.
+- **Decision:** Use Tailscale to reach Windows OpenSSH on Atlas, with a Windows firewall allow rule limited to the Tailscale interface and a dedicated iPhone ED25519 SSH key; launch Ubuntu WSL2 from the Windows SSH session. Keep normal laptop sleep timeouts (30 minutes AC / 5 minutes battery) rather than requiring 24/7 availability.
+- **Rationale:** Enable occasional remote Linux administration from an iPhone over cellular without public SSH port forwarding, while preserving Atlas's primary workstation role and power-saving behavior.
+- **Tradeoffs:** Key-backed Tailscale access avoids a public router listener but depends on Atlas remaining awake and connected. Automatic SSH/Tailscale service startup was configured but not validated across reboot; effective password-authentication policy, other firewall allowances, lid behavior, and fingerprint trust still warrant review. Direct Tailscale access to Hephaestus remains a separate future option, not part of this implementation.
+- **Authority:** [Atlas](devices/atlas.md#remote-access-from-iphone-owner-tested-2026-11-03), [remote access runbook](operations/ssh-iphone-atlas-tailscale.md).
 
 ## Future decision template
 
