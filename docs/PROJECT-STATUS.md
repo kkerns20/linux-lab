@@ -1,6 +1,6 @@
 # Home Lab HQ — Project Olympus status
 
-**Last updated:** 2026-11-01 (planning documentation only). GitHub main reviewed 2026-11-01 at `b598fe8`; no new fleet checks. **Last verified:** 2026-10-28 for repository synchronization and the current Athena Fedora session context. Hephaestus inventory, SSH exercise, and backup/recovery results dated 2026-10-28 are owner-provided evidence, not independent Codex inspections. Earlier device inspections retain their own dates; this is not a fleet health check.
+**Last updated:** 2026-11-03 (owner-reported mobile SSH exercise documented). GitHub main previously reviewed 2026-11-01 at `b598fe8`; no new full-fleet inspection. **Last verified:** 2026-10-28 for repository synchronization and the current Athena Fedora session context. Hephaestus inventory, SSH exercise, and backup/recovery results dated 2026-10-28 are owner-provided evidence, not independent Codex inspections. Earlier device inspections retain their own dates; this is not a fleet health check.
 
 Start here for new ChatGPT conversations and Codex sessions, then read [repository instructions](../AGENTS.md) and the relevant authoritative documents below. Home Lab HQ is the central planning and documentation workflow for Project Olympus. See the [decision log](DECISIONS.md) and [chronological work log](WORK-LOG.md) for context.
 
@@ -35,6 +35,8 @@ Hardware specifications remain in the [device inventory](devices/README.md) and 
 - **Owner-provided backup/recovery results, 2026-10-28:** The first YAMS backup failed on a root-only Portainer directory and left YAMS stopped; the owner recovered it with `yams start`. An elevated retry with an `EXIT` restart trap produced a readable archive with permissions `600`; Gluetun and Watchtower reported healthy in Docker after recovery from the first failure. Following the successful retry, YAMS reported all 11 containers running; no separate post-retry Docker health check or application-level verification was performed. See [Hephaestus backup evidence and remaining gaps](devices/hephaestus.md#backup-failure-and-recovery--2026-10-28).
 - **Sandbox networking isolated, 2026-10-28:** Codex observed failed GitHub lookup/Git access inside its sandbox and successful Git access after owner-approved network access; regular-terminal success and **Ask for approval** selection are owner-reported. GitHub and Hephaestus were synchronized at `65c689c1bb4dd129223cf510784bc3c9240d53b7`. No Ubuntu DNS changes were needed. Retain sandbox protection and approve individual network operations; see the [device investigation](devices/hephaestus.md#codex-sandbox-networking-investigation--2026-10-28) and [work log](WORK-LOG.md#2026-10-28--codex-sandbox-networking-isolated-and-troubleshooting-documented).
 
+- **Owner-tested 2026-11-03 — iPhone-to-Atlas remote SSH:** Tailscale-restricted Windows OpenSSH with a dedicated ED25519 key successfully connected from iPhone cellular; Windows identity/hostname and Ubuntu WSL2 Bash identity were checked. Windows SSH/Tailscale services both reported Running / Automatic. The owner restored normal AC sleep (30 minutes; battery 5 minutes) rather than leave Atlas always awake. Details, limits, and recovery in the [remote-access runbook](operations/ssh-iphone-atlas-tailscale.md). This is not a successful reboot-persistence or full security audit.
+
 ## Active projects and upcoming work
 
 | Workstream | Status and next deliverable |
@@ -59,6 +61,8 @@ The [Project Olympus development roadmap](../projects/olympus-development-roadma
 - **Backup protection:** No off-device backup or restoration test exists; no external backup disk or mounted network backup storage was detected. The YAMS script can leave services stopped on archive failure; the retry's restart trap does not establish a permanent fix. Scope/media coverage, retention, and application verification remain TODO. See [backup findings](devices/hephaestus.md#backup-failure-and-recovery--2026-10-28).
 - **Migration readiness:** a dated owner-provided host/container/storage baseline is now recorded, but application/dependency validation and tested backup/restore remain TODO. Olympus hardware, budget, and final design remain unselected; migration execution and recovery tests have not been completed here.
 - **Evidence gaps:** Hephaestus's installed-versus-Linux-visible memory difference and fresh-terminal prompt persistence remain unresolved. Athena firewall/reboot and GitHub authentication reports, Hermes activation/Insider status, and broader Hephaestus application health have not been independently verified. Atlas Windows build and Hermes administration tooling remain TODO. Historical Codex PATH warnings on Atlas/Athena are recorded; current recurrence was not checked.
+
+- **Atlas remote-access follow-up:** Test cellular reconnection after a Windows reboot while Atlas is awake; inspect effective Windows OpenSSH password-authentication and firewall rules, verify SSH host-key fingerprint, check lid-close behavior and read back the restored AC sleep timeout. No additional configuration change was authorized during this documentation update.
 
 ## Prioritized next actions
 
